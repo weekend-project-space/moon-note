@@ -1,6 +1,6 @@
 # moon note (BulletPoints)
 
-利用这个周末的时间开发了一个子弹笔记的小应用叫 [Moon note](https://weekendproject.space/note.html)，寓意：月亮的光芒来自太阳 。
+利用这个周末的时间开发了一个子弹日记的小应用叫 [Moon note](https://weekendproject.space/note.html)，寓意：月亮的光芒来自太阳 。
 
 feature:
 

@@ -58,7 +58,7 @@ const exportConfig = () => {
           class="logo"
         /> -->
         <h1 class="site-title">
-          <span class="mdi mdi-bullseye-arrow"></span> BulletPoints
+          <span class="mdi mdi-bullseye-arrow"></span> Moon bullet journals
         </h1>
         <div class="nav-warp">
           <!-- <label class="label" for="">setting</label> -->
@@ -75,7 +75,8 @@ const exportConfig = () => {
       <div class="main">
         <header>
           <h1 class="site-title">
-            <span class="mdi mdi-bullseye-arrow"></span>Moon BulletPoints (Beta)
+            <span class="mdi mdi-bullseye-arrow"></span>Moon bullet journals
+            (Beta)
           </h1>
           <nav class="favs">
             <li v-for="item in favs" class="fav" :key="item">
