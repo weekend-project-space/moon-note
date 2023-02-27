@@ -2,7 +2,7 @@
 import { computed, ref, toRefs, toRef } from "vue";
 import MarkDown from "../components/MarkDown.vue";
 import TodoList from "../components/TodoList.vue";
-import Action from "../components/Action.vue";
+import EventList from "../components/EventList.vue";
 import "element-plus/es/components/calendar/style/css";
 import { ElCalendar } from "element-plus";
 import { useStore } from "../store";
@@ -150,7 +150,7 @@ const exportConfig = () => {
         Event
       </label>
       <div class="event-warp">
-        <Action v-model="bp.events"></Action>
+        <EventList v-model="bp.events"></EventList>
       </div>
       <div class="card-warp">
         <div class="card">

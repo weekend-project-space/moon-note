@@ -3,7 +3,6 @@ export function get(url, config) {
         const xhr = new XMLHttpRequest();
         initConfig(xhr, config)
         xhr.open('GET', url)
-        console.log('----', xhr)
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {

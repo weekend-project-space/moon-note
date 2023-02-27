@@ -63,7 +63,7 @@ export function readBp(day) {
     } else {
         return {
             day: day,
-            todos: [{ value: 'todo item test1', done: 'false' }],
+            todos: [{ value: 'note', done: true }, { value: 'event', done: true }, { value: 'todo', done: true }, { value: '离线使用 pwa', done: false }, { value: '数据导出', done: true }, { value: '导入', done: false }, { value: '小组件 (Podcat, RssList, Quick Note)', done: true }, { value: '自定义小组件', done: true }, { value: '三方小组件', done: false }, { value: '常用网址收藏', done: true }, { value: '日期查看跳转', done: true }],
             note: '欢迎使用 moon bulletPoints, 数据全部存放再您的个人设备上，无需担心数据泄露，可以点击右上角导出，支持离线使用，在这里[查看源码](https://github.com/weekend-project-space/moon-note) \n > Note采用md书写格式下面是语法示例 \n ## Markdown Basic Syntax \n> Dorothy followed her through many of the beautiful rooms in her castle. \n - [x] Write the press release',
             events: ['hello world']
         }
