@@ -414,7 +414,7 @@ const exportConfig = () => {
     min-height: var(--top-height);
     display: grid;
     justify-content: flex-start;
-    grid-template-columns: auto 60px;
+    grid-template-columns: 5fr minmax(60px, 1fr);
   }
   .think-different-text {
   }
@@ -535,7 +535,7 @@ const exportConfig = () => {
     grid-template-columns: 1fr;
   }
   .panel {
-    display: none;
+    // display: none;
   }
 }
 @media (max-width: 1024px) {
@@ -551,10 +551,10 @@ const exportConfig = () => {
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
   }
-  .sidebar,
-  .panel {
-    display: none;
-  }
+  // .sidebar,
+  // .panel {
+  //   display: none;
+  // }
 }
 @media (max-width: 680px) {
   :root {
