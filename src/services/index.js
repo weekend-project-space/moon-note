@@ -5,6 +5,7 @@ import moment from 'moment'
 // favs:[''],
 //  wids:[{
 // name:'Podcast',
+// title: ''
 // data:'xxxxx'||{}||araray
 // }]
 //   bps:{
@@ -63,7 +64,7 @@ export function readBp(day) {
         return {
             day: day,
             todos: [{ value: 'todo item test1', done: 'false' }],
-            note: '欢迎使用 moon bulletPoints, 数据全部存放再您的个人设备上，无需担心数据泄露，可以点击右上角导出，支持离线使用，在这里查看源码 \n > Note采用md书写格式下面是语法示例 \n',
+            note: '欢迎使用 moon bulletPoints, 数据全部存放再您的个人设备上，无需担心数据泄露，可以点击右上角导出，支持离线使用，在这里[查看源码](https://github.com/weekend-project-space/moon-note) \n > Note采用md书写格式下面是语法示例 \n ## Markdown Basic Syntax \n> Dorothy followed her through many of the beautiful rooms in her castle. \n - [x] Write the press release',
             events: ['hello world']
         }
     }
@@ -88,7 +89,23 @@ export function getBps(month) {
 export function getWids() {
     let k = 'wids';
     let v = getItem(k)
-    return v ? v : []
+    return v ? v : [
+        {
+            name: "Podcast",
+            title: "podcast",
+            data: "https://rsshub.app/ximalaya/album/51101122/0/shownote",
+        },
+        {
+            name: "RssList",
+            title: "RssList",
+            data: "https://api.webfollow.cc/api/articles?source=EXPLORE&sort=channel,desc",
+        },
+        {
+            name: "NoteBook",
+            title: "QuickNote",
+            data: "hello world",
+        },
+    ]
 }
 
 export function getUrls() {

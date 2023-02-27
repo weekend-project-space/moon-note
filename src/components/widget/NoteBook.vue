@@ -24,9 +24,10 @@ const mkdownLock = computed(
 <template>
   <Widget
     icon="mdi mdi-notebook"
-    title="便签"
     style="background: linear-gradient(to bottom right, #05c19c, #8685ef)"
     class="note-book"
+    :title="title"
+    :style="style"
   >
     <template #action>
       <button class="btn" @click="toggleNote">

@@ -15,7 +15,9 @@ defineProps({
         </div>
       </slot>
     </div>
-    <slot> </slot>
+    <div class="widget-body">
+      <slot> </slot>
+    </div>
   </div>
 </template>
 
@@ -33,6 +35,10 @@ defineProps({
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
+  }
+  .widget-body {
+    height: 160px;
+    overflow: auto;
   }
 }
 </style>

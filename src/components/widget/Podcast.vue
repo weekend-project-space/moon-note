@@ -1,31 +1,56 @@
 <script setup>
-import { ref } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import Widget from "./Widget.vue";
 import Aplayer from "vue3-aplayer";
-defineProps({
-  modelValue: String,
-  value: Array,
+import * as request from "@/utils/request";
+const props = defineProps({
+  modelValue: Object,
+  title: String,
+  style: Object,
 });
-const list = ref([
-  {
-    title: "95. 徐英瑾×梁文道：ChatGPT会如何影响我们？",
-    artist: "八分",
-    src: "http://aod.cos.tx.xmcdn.com/storages/07a4-audiofreehighqps/D6/CF/GKwRIasHy4lCAQxiCAH6yXgr.m4a",
-    pic: "http://imagev2.xmcdn.com/storages/3c93-audiofreehighqps/FB/D1/GKwRIRwHXJrWAATrWgHYPYcT.jpeg!op_type=3&columns=640&rows=640",
-  },
-  {
-    title: "92. 如何看待“流浪气球”事件？",
-    artist: "八分",
-    src: "http://aod.cos.tx.xmcdn.com/storages/981b-audiofreehighqps/05/6A/GKwRIJEHu_UAANgKEwH2QDJi.m4a",
-    pic: 'http://imagev2.xmcdn.com/storages/3c93-audiofreehighqps/FB/D1/GKwRIRwHXJrWAATrWgHYPYcT.jpeg!op_type=3&columns=640&rows=640"',
-  },
-]);
+const emit = defineEmits(["update:modelValue", "update:title"]);
+
+function updateModelValue(v) {}
+const url = computed(() => props.modelValue);
+
+const data = ref([]);
+const music = ref({
+  title: "",
+  artist: "",
+  src: "",
+  pic: "",
+});
+onMounted(() => {
+  watchEffect(async () => {
+    data.value = (
+      await request.get(
+        url.value.includes("webfollow.cc")
+          ? url.value
+          : "https://api.webfollow.cc/api/channels/articles?id=" + url.value
+      )
+    ).content.map((o) => ({
+      title: o.title,
+      artist: o.channelName,
+      src: o.enclosure,
+      pic: o.thumbnail,
+    }));
+    music.value = data.value[0];
+  });
+});
+const { modelValue, title: title0 } = props;
+const copyUrl = ref(modelValue);
+const copyTitle = ref(title0);
+const dialog = ref(false);
+function confirm() {
+  emit("update:modelValue", copyUrl);
+  emit("update:title", copyTitle.value);
+  dialog.value = false;
+}
 </script>
 
 <template>
   <Widget
     icon="mdi mdi-rss"
-    title="Podcast"
     style="
       background: linear-gradient(
         to bottom right,
@@ -33,17 +58,27 @@ const list = ref([
         rgb(65, 184, 131)
       );
     "
-    ><aplayer
-      autoplay
-      :music="{
-        title: '95.徐英瑾×梁文道：ChatGPT会如何影响我们？',
-        artist: '八分',
-        src: 'http://aod.cos.tx.xmcdn.com/storages/07a4-audiofreehighqps/D6/CF/GKwRIasHy4lCAQxiCAH6yXgr.m4a',
-        pic: 'http://imagev2.xmcdn.com/storages/3c93-audiofreehighqps/FB/D1/GKwRIRwHXJrWAATrWgHYPYcT.jpeg!op_type=3&columns=640&rows=640',
-      }"
-      :list="list"
-    />
+    :title="title"
+    :style="style"
+  >
+    <template #action>
+      <button class="btn btn-1" @click="dialog = true">
+        <span class="mdi mdi-tune-variant"></span>
+      </button>
+    </template>
+    <aplayer autoplay :music="music" :list="data" />
   </Widget>
+  <el-dialog v-model="dialog" title="settings">
+    <label class="label" for="">title</label>
+    <input type="text" class="input" v-model="copyTitle" />
+    <label class="label">url</label>
+    <input type="text" class="input" v-model="copyUrl" />
+    <template #footer>
+      <span class="dialog-footer">
+        <button class="btn" @click="confirm">Confirm</button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <style lang="less" scoped>
@@ -89,9 +124,15 @@ const list = ref([
   .aplayer-list ol li {
     color: #fff;
     opacity: 0.6;
-    height: 25px;
-    line-height: 25px;
     border-top: 0;
   }
+  .aplayer-list ol li.aplayer-list-light {
+    /* background: #efefef; */
+    background: transparent;
+    opacity: 0.9;
+  }
+}
+.btn-1 {
+  color: #fff;
 }
 </style>

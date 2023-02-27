@@ -9,26 +9,9 @@ import { useStore } from "../store";
 import { storeToRefs } from "pinia";
 import { exportData } from "../services";
 const store = useStore();
-const { favs, bp, days } = storeToRefs(store);
+const { favs, bp, days, wids } = storeToRefs(store);
 const { changeDate } = store;
 
-// {
-// urls:[''],
-//  wids:[{
-// name:'Podcast',
-// data:'xxxxx'||{}||araray
-// }]
-//   bps:{
-//     '2023-11'：[{
-//        day: '11-01',
-//        todo:[{vaule:'',done:false}],
-//        note: '',
-//        event:['']
-//      }]
-//   }
-// }
-
-const content = ref();
 const date = ref(new Date());
 const calendar = ref();
 const note = ref();
@@ -58,79 +41,12 @@ const addFav = () => {
 const hasDay = (d) => {
   return new Set(days.value).has(d);
 };
-
 const exportConfig = () => {
   let link = document.createElement("a");
   link.download = "config.json";
   link.href = "data:text/plain," + JSON.stringify(exportData());
   link.click();
 };
-const hots = ref([
-  {
-    id: "997937e981acfbe51439d2573e770bfb",
-    title: "美团面试：MySQL 自增主键一定是连续的吗？",
-    link: "https://toutiao.io/k/8favlia",
-    summary: "",
-    pubDate: "1天前",
-    channelId: "http%3A%2F%2Ffeedmaker.kindle4rss.com%2Ffeeds%2Ftoutiao.io.xml",
-    channelIcon: "http://toutiao.io/favicon.ico",
-    channelName: "开发者头条",
-  },
-  {
-    id: "17202fa05d235c254607382b5768e59f",
-    title: "健康码何去何从？",
-    link: "http://weixin.sogou.com/weixin?type=2&query=界面 健康码何去何从？",
-    summary: "",
-    pubDate: "4天前",
-    channelId:
-      "http%3A%2F%2Ffeedmaker.kindle4rss.com%2Ffeeds%2Fwowjiemian.weixin.xml",
-    channelIcon: "https://www.sogou.com/images/logo/new/favicon.ico?v=4",
-    channelName: "界面",
-  },
-  {
-    id: "146b91d988616966f214747713cb1c9f",
-    title: "《匆匆》 朱自清",
-    link: "http://meiriyiwen.com",
-    summary: "燕子去了，有再来的时候；杨柳枯了，有再青的时候；桃花谢了，有",
-    pubDate: "2天前",
-    channelId: "http%3A%2F%2Fnode2.feed43.com%2Fmryw.xml",
-    channelIcon:
-      "http://yile-static-files.b0.upaiyun.com/meiriyiwen_com_favicon.ico",
-    channelName: "每日一文",
-  },
-  {
-    id: "edd51c15433618f2b90c8f3ec2509a8a",
-    title: "February 22, 2023",
-    thumbnail: "https://pic.yupoo.com/fotomag/8b2cc6b0/df56babe.jpg",
-    link: "http://m.idai.ly/se/a193iG?1676995200",
-    summary: "\n February 22, 2023 \n \n  \n  \n ",
-    pubDate: "2天前",
-    channelId: "https%3A%2F%2Ffeedx.net%2Frss%2Fidaily.xml",
-    channelName: "每日环球视野",
-  },
-  {
-    id: "e623ae9c2a1f7bbc6facd92fa8465b5a",
-    title: "你是一名游戏设计师，会如何设计一种让人恐惧但没有血腥元素的怪物？",
-    thumbnail:
-      "https://pic1.zhimg.com/v2-44da6d1c2d3cd6fb5056b35867610e77_720w.jpg?source=b1748391?rss",
-    link: "http://www.zhihu.com/question/566903871/answer/2866181144?utm_campaign=rss&utm_medium=rss&utm_source=rss&utm_content=title",
-    summary: "\n 想象平时喝水用的水杯，在你刚刚拿起来想要喝水的时候，突然",
-    pubDate: "17小时前",
-    channelId: "https%3A%2F%2Fwww.zhihu.com%2Frss",
-    channelIcon: "https://static.zhihu.com/heifetz/favicon.ico",
-    channelName: "知乎每日精选",
-  },
-  {
-    id: "b72f303153101d6a4d745575241290e9",
-    title: "想转 C++，求问什么方向/程度/行业的 C++开发能达到年薪百万？",
-    link: "https://www.v2ex.com/t/918857#reply0",
-    summary: "如题，其他语言方向呢，比如前端、服务端、客户端等",
-    pubDate: "1天前",
-    channelId: "https%3A%2F%2Fv2ex.com%2Findex.xml",
-    channelIcon: "https://www.v2ex.com/static/favicon.ico",
-    channelName: "V2EX",
-  },
-]);
 </script>
 <template>
   <div class="warp">
@@ -159,7 +75,7 @@ const hots = ref([
       <div class="main">
         <header>
           <h1 class="site-title">
-            <span class="mdi mdi-bullseye-arrow"></span> BulletPoints (Beta)
+            <span class="mdi mdi-bullseye-arrow"></span>Moon BulletPoints (Beta)
           </h1>
           <nav class="favs">
             <li v-for="item in favs" class="fav" :key="item">
@@ -175,11 +91,14 @@ const hots = ref([
         <section class="main-section">
           <div class="tips">
             <div class="main-card">
-              <Podcast :value="hots" />
-
-              <RssList :value="hots" />
-
-              <note-book v-model="noteText" />
+              <template v-for="wid in wids">
+                <component
+                  :is="wid.name"
+                  v-model:title="wid.title"
+                  :style="wid.style"
+                  v-model="wid.data"
+                ></component>
+              </template>
             </div>
           </div>
           <div class="content">
@@ -226,7 +145,6 @@ const hots = ref([
           ></span>
         </div>
       </div>
-
       <label class="label">
         <span class="mdi mdi-calendar-text"></span>
         Event

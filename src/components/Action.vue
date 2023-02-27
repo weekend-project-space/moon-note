@@ -36,10 +36,10 @@ function remove(i) {
       />
     </div>
     <ul class="evant-list">
-      <li class="item" v-for="(item, index) in list" :key="item.value">
+      <li class="item" v-for="(item, index) in list" :key="item">
         <!-- <i><input type="checkbox" v-model="item.done" /></i> -->
         <div>
-          <p v-text="item.value" :class="{ 'todo-done': item.done }"></p>
+          <p v-text="item"></p>
         </div>
         <div class="btn mdi mdi-close" @click="remove(index)"></div>
       </li>
