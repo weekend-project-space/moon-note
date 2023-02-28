@@ -26,4 +26,6 @@ feature:
 
 - [x] 日期查看跳转
 
+- [x] 响应式
+
 [查看源码](https://github.com/weekend-project-space/moon-note)

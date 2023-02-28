@@ -15,6 +15,7 @@
     "moment": "^2.29.4",
     "pinia": "^2.0.32",
     "vue": "^3.2.45",
+    "vue-router": "4",
     "vue3-aplayer": "^1.7.3",
     "vue3-markdown": "^1.1.7"
   },

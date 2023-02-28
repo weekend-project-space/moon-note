@@ -21,12 +21,11 @@ onMounted(() => {
     ).content;
   });
 });
-const { modelValue, title: title0 } = props;
-const copyUrl = ref(modelValue);
-const copyTitle = ref(title0);
+const copyUrl = ref(props.modelValue);
+const copyTitle = ref(props.title);
 const dialog = ref(false);
 function confirm() {
-  emit("update:modelValue", copyUrl);
+  emit("update:modelValue", copyUrl.value);
   emit("update:title", copyTitle.value);
   dialog.value = false;
 }

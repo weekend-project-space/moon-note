@@ -1,9 +1,7 @@
-<script setup>
-import Index from "./views/Index.vue";
-</script>
+<script setup></script>
 
 <template>
-  <Index msg="Vite + Vue" />
+  <Layout><router-view></router-view></Layout>
 </template>
 <style lang="less">
 .btn {

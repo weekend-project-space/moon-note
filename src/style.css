@@ -13,7 +13,7 @@
   -webkit-text-size-adjust: 100%;
   --continer-padding: 30px;
   --inner-padding: 20px;
-  --top-height: 60px;
+  --top-height: 50px;
 }
 html body {
   padding: 0;
@@ -49,14 +49,12 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.navs a {
+  color: #000;
 }
-a:hover {
-  color: #535bf2;
+.navs a:hover,
+.navs .router-link-active {
+  color: #00b08c;
 }
 .input {
   width: 100%;
@@ -89,4 +87,11 @@ a:hover {
   --el-calendar-cell-width: 42px;
   --el-calendar-cell-height: 1.2em;
   --el-calendar-border: none;
+  --el-fill-color-blank: transparent;
+}
+
+#app .el-dialog {
+  width: none;
+  min-width: 320px;
+  max-width: 50%;
 }

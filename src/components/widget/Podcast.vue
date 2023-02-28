@@ -4,7 +4,7 @@ import Widget from "./Widget.vue";
 import Aplayer from "vue3-aplayer";
 import * as request from "@/utils/request";
 const props = defineProps({
-  modelValue: Object,
+  modelValue: String,
   title: String,
   style: Object,
 });
@@ -37,12 +37,11 @@ onMounted(() => {
     music.value = data.value[0];
   });
 });
-const { modelValue, title: title0 } = props;
-const copyUrl = ref(modelValue);
-const copyTitle = ref(title0);
+const copyUrl = ref(props.modelValue);
+const copyTitle = ref(props.title);
 const dialog = ref(false);
 function confirm() {
-  emit("update:modelValue", copyUrl);
+  emit("update:modelValue", copyUrl.value);
   emit("update:title", copyTitle.value);
   dialog.value = false;
 }

@@ -10,6 +10,7 @@ specifiers:
   unplugin-element-plus: ^0.7.0
   vite: ^4.1.0
   vue: ^3.2.45
+  vue-router: '4'
   vue3-aplayer: ^1.7.3
   vue3-markdown: ^1.1.7
 
@@ -20,6 +21,7 @@ dependencies:
   moment: 2.29.4
   pinia: 2.0.32_vue@3.2.47
   vue: 3.2.47
+  vue-router: 4.1.6_vue@3.2.47
   vue3-aplayer: 1.7.3_vue@3.2.47
   vue3-markdown: 1.1.7
 
@@ -722,7 +724,7 @@ packages:
     optional: true
 
   /image-size/0.5.5:
-    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -1383,6 +1385,15 @@ packages:
       chalk: 4.1.2
       hash-sum: 2.0.0
       loader-utils: 2.0.4
+      vue: 3.2.47
+    dev: false
+
+  /vue-router/4.1.6_vue@3.2.47:
+    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.0
       vue: 3.2.47
     dev: false
 
