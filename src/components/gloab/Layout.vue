@@ -65,7 +65,7 @@ const exportConfig = () => {
               ></router-link>
             </li>
             <li>
-              <router-link to="/journal"
+              <router-link to="/note"
                 ><span class="mdi mdi-notebook-edit-outline"></span
               ></router-link>
             </li>
