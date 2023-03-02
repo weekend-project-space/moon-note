@@ -1,31 +1,47 @@
 # moon note (Moon Bullet journal)
 
-利用这个周末的时间开发了一个子弹日记的小应用叫 [Moon note](https://weekendproject.space/journal.html)，寓意：月亮的光芒来自太阳 。
+I used this weekend to develop a small bullet journal application called [Moon note](https://weekendproject.space/journal.html), which means: the light of the moon comes from the sun.
 
 feature:
 
-- [x] note
+- [x] No server (data stored locally)
 
-- [x] event
+- [x] Note
 
-- [x] todo
+- [x] Event
 
-- [ ] 离线使用 pwa
+- [x] Todo
 
-- [x] 数据导出
+- [ ] Use pwa offline
 
-- [ ] 导入
+- [x] Data export
 
-- [x] 小组件 (Podcat, RssList, Quick Note)
+- [ ] Data import
 
-- [x] 自定义小组件
+- [x] Widget (Podcat, RssList, Quick Note)
 
-- [ ] 三方小组件
+- [x] Custom widget
 
-- [x] 常用网址收藏
+- [ ] Three-party widgets
 
-- [x] 日期查看跳转
+- [x] Favorite URLs
 
-- [x] 响应式
+- [x] Date view jump
 
-[查看源码](https://github.com/weekend-project-space/moon-note)
+- [x] Responsive
+
+
+
+**Use**
+
+```
+npm install
+
+npm run dev
+```
+or
+```
+npm install
+
+npm run build
+```
