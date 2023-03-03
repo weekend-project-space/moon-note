@@ -177,7 +177,7 @@ async function send() {
   <el-dialog v-model="dialog" title="settings">
     <label class="label" for="">title</label>
     <input type="text" class="input" v-model="copyTitle" />
-    <label class="label">url</label>
+    <label class="label">chatgpt api key</label>
     <input type="text" class="input" v-model="copyKey" />
     <template #footer>
       <span class="dialog-footer">
