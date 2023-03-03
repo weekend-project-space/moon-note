@@ -9,6 +9,7 @@ const About = { template: '<div>About</div>' }
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', component: () => import('@/views/Index.vue') },
+    { path: '/chat-gpt', component: () => import('@/views/ChatGPT.vue') },
     { path: '/todo', component: () => import('@/views/Todo.vue') },
     { path: '/note', component: () => import('@/views/Note.vue') },
     { path: '/about', component: About },

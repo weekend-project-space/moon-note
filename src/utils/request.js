@@ -1,8 +1,17 @@
 export function get(url, config) {
+    return request(url, 'GET', config)
+}
+
+export function post(url, data, config) {
+    return request(url, 'POST', JSON.stringify(data), config)
+}
+
+
+function request(url, method, data, config) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
+        xhr.open(method, url, true)
         initConfig(xhr, config)
-        xhr.open('GET', url)
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
@@ -13,7 +22,7 @@ export function get(url, config) {
             }
 
         }
-        xhr.send()
+        xhr.send(data)
     })
 }
 

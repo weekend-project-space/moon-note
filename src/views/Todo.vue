@@ -3,14 +3,7 @@ import TodoList from "../components/TodoList.vue";
 import { useStore } from "../store";
 import { storeToRefs } from "pinia";
 const store = useStore();
-const { favs, bp, days, wids } = storeToRefs(store);
-
-const addFav = () => {
-  let url = prompt("请输入网址");
-  if (url) {
-    favs.value.push(url);
-  }
-};
+const { bp } = storeToRefs(store);
 </script>
 <template>
   <div class="label-group">

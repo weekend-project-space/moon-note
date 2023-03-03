@@ -91,6 +91,11 @@ export function getWids() {
     let v = getItem(k)
     return v ? v : [
         {
+            name: "ChatGPT",
+            title: "ChatGPT",
+            data: "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",
+        },
+        {
             name: "Podcast",
             title: "podcast",
             data: "https://rsshub.app/ximalaya/album/51101122/0/shownote",
@@ -99,11 +104,6 @@ export function getWids() {
             name: "RssList",
             title: "RssList",
             data: "https://api.webfollow.cc/api/articles?source=EXPLORE&sort=channel,desc",
-        },
-        {
-            name: "NoteBook",
-            title: "QuickNote",
-            data: "hello world",
         },
     ]
 }
