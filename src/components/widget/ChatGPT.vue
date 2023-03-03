@@ -120,6 +120,9 @@ async function send() {
       </div>
     </template>
     <template #action>
+      <button class="btn btn-1" @click="$router.push('/chat-gpt-online')">
+        <span class="mdi mdi-fullscreen"></span>
+      </button>
       <button class="btn btn-1" @click="dialog = true">
         <span class="mdi mdi-tune-variant"></span>
       </button>
@@ -181,6 +184,7 @@ async function send() {
           type="text"
           class="textarea"
           v-model="value"
+          placeholder="Please enter your chat message and press enter to send."
           @keypress.enter="send"
         />
         <button type="submit" class="btn btn-send" @click="send">

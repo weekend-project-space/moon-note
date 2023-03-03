@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+const route = useRoute();
+
+const fullScreen = computed(() => route.meta.fullScreen);
+</script>
 
 <template>
-  <Layout><router-view></router-view></Layout>
+  <router-view v-if="fullScreen"></router-view>
+  <Layout v-else><router-view></router-view></Layout>
 </template>
 <style lang="less">
 .btn {

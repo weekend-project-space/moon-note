@@ -44,12 +44,11 @@ function scrollToBottom() {
 <style lang="less" scoped>
 .widget {
   background: linear-gradient(to bottom right, #05c19c, #8685ef);
-  border: 1px solid #eee;
   color: #fff;
   padding: 10px;
   border-radius: 10px;
   display: grid;
-  grid-template-rows: 30px 1fr minmax(0, auto);
+  grid-template-rows: 36px 1fr minmax(0, auto);
   .widget-header {
     font-size: 1.1em;
     font-weight: bold;

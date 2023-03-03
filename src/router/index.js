@@ -10,6 +10,7 @@ const About = { template: '<div>About</div>' }
 const routes = [
     { path: '/', component: () => import('@/views/Index.vue') },
     { path: '/chat-gpt', component: () => import('@/views/ChatGPT.vue') },
+    { path: '/chat-gpt-online', meta: { fullScreen: true }, component: () => import('@/views/ChatGPT.vue') },
     { path: '/todo', component: () => import('@/views/Todo.vue') },
     { path: '/note', component: () => import('@/views/Note.vue') },
     { path: '/about', component: About },
