@@ -1,0 +1,1 @@
+nohup python ./chat.py > ./chat.log 2>&1 &
