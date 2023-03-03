@@ -30,6 +30,9 @@ async function send() {
       role: "me",
       content: value.value,
     });
+    setTimeout(() => {
+      widgetRef.value();
+    }, 300);
     loading.value = true;
     const prompt = value.value;
     value.value = "";
@@ -69,21 +72,28 @@ async function send() {
       }
     );
     loading.value = false;
-    setTimeout(() => {
-      widgetRef.value();
-    }, 300);
-    console.log(d);
+    // console.log(d);
+    const r = d.choices[0].message.content.trim();
     data.value.push({
       role: "chatgpt",
-      content: d.choices[0].message.content.trim(),
+      content: "",
     });
+    for (let i = 0; i < r.length; i++) {
+      setTimeout(() => {
+        data.value[data.value.length - 1].content += r.charAt(i);
+        if (i % 10 == 0 || i == r.length - 1) {
+          widgetRef.value();
+        }
+      }, i * 50);
+    }
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     data.value.push({
       role: "chatgpt",
       content: "这会有点累了，等会再问吧，或者换一下右上角角的chatgpt api key",
     });
     loading.value = false;
+    widgetRef.value();
   }
 }
 </script>
@@ -167,7 +177,12 @@ async function send() {
     </div>
     <template #footer>
       <div class="form-control">
-        <textarea v-model="value" @keypress.enter="send"></textarea>
+        <input
+          type="text"
+          class="textarea"
+          v-model="value"
+          @keypress.enter="send"
+        />
         <button type="submit" class="btn btn-send" @click="send">
           <span class="mdi mdi-send"></span>
         </button>
@@ -200,7 +215,7 @@ async function send() {
   background-clip: padding-box;
   display: grid;
   grid-template-columns: auto 50px;
-  textarea {
+  .textarea {
     border: 0;
     padding: 0.5em;
     border-radius: 10px;
@@ -232,7 +247,8 @@ async function send() {
   height: 30px;
   line-height: 30px;
   width: 30px;
-  background: #666;
+  font-size: 1.2em;
+  background: #999;
   text-align: center;
   color: #fff;
 }
@@ -250,6 +266,9 @@ async function send() {
   .vmd-box .vmd-body .vmd-view {
     padding: 0;
     color: #ccc;
+  }
+  .markdown-body[data-theme="light"] pre {
+    background: rgba(0, 0, 0, 0.3);
   }
 }
 .container ::v-deep .widget-footer {
