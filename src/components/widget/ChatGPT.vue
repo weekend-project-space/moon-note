@@ -59,10 +59,12 @@ async function send() {
     //   content: d.choices[0].text.trim(),
     // });
     const d = await request.post(
-      "https://api.openai.com/v1/chat/completions",
+      //"https://api.openai.com/v1/chat/completions",
+      "/v1/chat/completions",
       {
         messages: [{ role: "user", content: prompt }],
         model: "gpt-3.5-turbo",
+        key:`${key.value}`
       },
       {
         headers: {
